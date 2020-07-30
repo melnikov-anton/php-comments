@@ -28,7 +28,7 @@ class Comment
     private $comment;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $created_at;
 
@@ -61,7 +61,7 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getcreated_at(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
