@@ -3,30 +3,36 @@
 {% block title %}Комментарии{% endblock %}
 
 {% block body %}
-  <h1>Комментарии</h1>
-  <div class="comments">
-    {% for comment in comments %}
-      <div class="singleComment">
-        <span class="nameTag">{{ comment.name }}</span>
-        <span class="dateTag">{{ comment.created_at|date("H:i d.m.Y ") }}</span>
-        
-        <div>{{ comment.comment }}</div>
+
+    {% include 'header.html' %}
+    <section class="content">
+      <div class="container">
+        <div class="comments">
+          {% for comment in comments %}
+            <div class="singleComment">
+              <span class="nameTag">{{ comment.name }}</span>
+              <span class="dateTag">{{ comment.created_at|date("H:i d.m.Y ") }}</span>
+              <div class="commentText">{{ comment.comment }}</div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <hr/>
+        <h3 class="formTitle">Оставить комментарий</h3>
+
+        <form method="post">
+          <label for="name">Ваше имя</label>
+          <br>
+          <input type="text" id="name" name="name" class="inputField" required>
+          <br>
+          <label for="comment">Ваш комментарий</label>
+          <br>
+          <textarea id="comment" name="comment" rows="10" cols="30" class="inputField" required></textarea>
+          <br>
+          <input class="btn" type="submit" value="Отправить">
+        </form>
       </div>
-    {% endfor %}
-  </div>
+    </section>
+    {% include 'footer.html' %}
 
-  <hr/>
-  <h3>Оставить комментарий</h3>
-
-  <form method="post">
-    <label for="name">Ваше имя</label>
-    <br>
-    <input type="text" id="name" name="name" required>
-    <br>
-    <label for="comment">Ваш комментарий</label>
-    <br>
-    <textarea name="comment" rows="10" cols="30" required></textarea>
-    <br>
-    <input type="submit" value="Отправить">
-</form>
 {% endblock %}
