@@ -30,7 +30,7 @@ class CommentsController extends AbstractController
       $comments = $repository->findBy([], ['created_at' => 'DESC']);
       return $this->render('comments/index.html.twig', [
           'comments' => $comments
-          //'comments' => ['Здесь', 'Будут', 'Комментарии'],
+          
       ]);
     }
 }
