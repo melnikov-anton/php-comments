@@ -25,12 +25,13 @@ class CommentsController extends AbstractController
 
         $entityManager->persist($newComment);
         $entityManager->flush();
+        return $this->redirectToRoute('comments');
       }
       $repository = $this->getDoctrine()->getRepository(Comment::class);
       $comments = $repository->findBy([], ['created_at' => 'DESC']);
       return $this->render('comments/index.html.twig', [
           'comments' => $comments
-          
+
       ]);
     }
 }
